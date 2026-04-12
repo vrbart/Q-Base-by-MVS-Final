@@ -8,9 +8,16 @@
     "node"
   ],
   "lane_weights": {
-    "ccbs-pro": 0.2,
-    "clean-core": 0.5,
-    "playground": 0.3
+    "aux-04": 0.012987,
+    "aux-05": 0.012987,
+    "aux-06": 0.012987,
+    "aux-07": 0.012987,
+    "aux-08": 0.012987,
+    "aux-09": 0.012987,
+    "aux-10": 0.012987,
+    "ccbs-pro": 0.181818,
+    "clean-core": 0.454545,
+    "playground": 0.272727
   },
   "lanes": [
     {
@@ -33,6 +40,55 @@
       "name": "CCBS Pro Legacy",
       "priority": 3,
       "role": "tertiary"
+    },
+    {
+      "directive": "-4",
+      "instance_id": "aux-04",
+      "name": "CCBS Aux 04",
+      "priority": 4,
+      "role": "auxiliary"
+    },
+    {
+      "directive": "-5",
+      "instance_id": "aux-05",
+      "name": "CCBS Aux 05",
+      "priority": 5,
+      "role": "auxiliary"
+    },
+    {
+      "directive": "-6",
+      "instance_id": "aux-06",
+      "name": "CCBS Aux 06",
+      "priority": 6,
+      "role": "auxiliary"
+    },
+    {
+      "directive": "-7",
+      "instance_id": "aux-07",
+      "name": "CCBS Aux 07",
+      "priority": 7,
+      "role": "auxiliary"
+    },
+    {
+      "directive": "-8",
+      "instance_id": "aux-08",
+      "name": "CCBS Aux 08",
+      "priority": 8,
+      "role": "auxiliary"
+    },
+    {
+      "directive": "-9",
+      "instance_id": "aux-09",
+      "name": "CCBS Aux 09",
+      "priority": 9,
+      "role": "auxiliary"
+    },
+    {
+      "directive": "-10",
+      "instance_id": "aux-10",
+      "name": "CCBS Aux 10",
+      "priority": 10,
+      "role": "auxiliary"
     }
   ],
   "routing": {
@@ -45,6 +101,6 @@
     "paid_budget_tokens": 0,
     "weekly_budget_tokens": 600000
   },
-  "updated_at": "2026-04-12T02:43:41.786989+00:00",
+  "updated_at": "2026-04-12T07:38:02.920784+00:00",
   "version": "ccbs-multi-instance-profile-v1"
 }
