@@ -1,0 +1,21 @@
+﻿# one extension id per line
+ms-vscode-remote.remote-wsl
+ms-python.python
+ms-python.vscode-pylance
+ms-python.vscode-python-envs
+redhat.vscode-yaml
+yzhang.markdown-all-in-one
+ms-toolsai.jupyter
+ms-python.black-formatter
+charliermarsh.ruff
+ms-dotnettools.csharp
+ms-dotnettools.csdevkit
+Ionide.Ionide-fsharp
+ms-vscode.cpptools
+ms-vscode.cpptools-extension-pack
+ms-vscode.cmake-tools
+ms-vscode.powershell
+eamodio.gitlens
+EditorConfig.EditorConfig
+
+Continue.continue

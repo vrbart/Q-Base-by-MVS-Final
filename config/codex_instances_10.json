@@ -1,0 +1,76 @@
+{
+  "version": "codex-instances-v1",
+  "instances": [
+    {
+      "instance_id": "clean-core",
+      "name": "CCBS Clean",
+      "workspace_id": "clean_core",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "playground",
+      "name": "CCBS Agent Toolbox",
+      "workspace_id": "playground",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "ccbs-pro",
+      "name": "CCBS Pro Legacy",
+      "workspace_id": "ccbs_pro",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "aux-04",
+      "name": "CCBS Aux 04",
+      "workspace_id": "aux_04",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "aux-05",
+      "name": "CCBS Aux 05",
+      "workspace_id": "aux_05",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "aux-06",
+      "name": "CCBS Aux 06",
+      "workspace_id": "aux_06",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "aux-07",
+      "name": "CCBS Aux 07",
+      "workspace_id": "aux_07",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "aux-08",
+      "name": "CCBS Aux 08",
+      "workspace_id": "aux_08",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "aux-09",
+      "name": "CCBS Aux 09",
+      "workspace_id": "aux_09",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "aux-10",
+      "name": "CCBS Aux 10",
+      "workspace_id": "aux_10",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    }
+  ]
+}
+

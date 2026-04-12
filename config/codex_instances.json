@@ -1,0 +1,26 @@
+{
+  "version": "codex-instances-v1",
+  "instances": [
+    {
+      "instance_id": "clean-core",
+      "name": "CCBS Clean",
+      "workspace_id": "clean_core",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "playground",
+      "name": "CCBS Agent Toolbox",
+      "workspace_id": "playground",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    },
+    {
+      "instance_id": "ccbs-pro",
+      "name": "CCBS Pro Legacy",
+      "workspace_id": "ccbs_pro",
+      "path": "{REPO_ROOT}",
+      "launch_args": ""
+    }
+  ]
+}

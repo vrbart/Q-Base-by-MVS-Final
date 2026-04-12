@@ -1,0 +1,50 @@
+{
+  "app_preferences": [
+    "codex_cli",
+    "vscode",
+    "powershell",
+    "windows_terminal",
+    "python",
+    "node"
+  ],
+  "lane_weights": {
+    "ccbs-pro": 0.2,
+    "clean-core": 0.5,
+    "playground": 0.3
+  },
+  "lanes": [
+    {
+      "directive": "-1",
+      "instance_id": "clean-core",
+      "name": "CCBS Clean",
+      "priority": 1,
+      "role": "primary"
+    },
+    {
+      "directive": "-2",
+      "instance_id": "playground",
+      "name": "Codex Playground",
+      "priority": 2,
+      "role": "secondary"
+    },
+    {
+      "directive": "-3",
+      "instance_id": "ccbs-pro",
+      "name": "CCBS Pro Legacy",
+      "priority": 3,
+      "role": "tertiary"
+    }
+  ],
+  "routing": {
+    "fallback_strategy": "priority_available",
+    "prefix_directive_enabled": true
+  },
+  "token_policy": {
+    "budget_source": "ccbs_quota_if_paid_zero",
+    "daily_budget_tokens": 120000,
+    "paid_budget_tokens": 0,
+    "weekly_budget_tokens": 600000
+  },
+  "updated_at": "2026-04-12T02:43:41.786989+00:00",
+  "version": "ccbs-multi-instance-profile-v1"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "qb-demo-automation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "capture": "node capture_ui_demo.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.54.0"
+  }
+}
