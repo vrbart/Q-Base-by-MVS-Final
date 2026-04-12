@@ -72,6 +72,7 @@ Run the proof script:
 - Start guide: [`START_HERE.md`](START_HERE.md)
 - Impact note: [`docs/IMPACT_ONE_PAGER.md`](docs/IMPACT_ONE_PAGER.md)
 - OBS capture guide: [`docs/VIDEO_RECORDING_OBS.md`](docs/VIDEO_RECORDING_OBS.md)
+- Task scale proof: [`docs/algofest/TASK_SCALE_AND_CONCURRENCY.md`](docs/algofest/TASK_SCALE_AND_CONCURRENCY.md)
 - Submission plan: [`docs/algofest/SUBMISSION_PLAN.md`](docs/algofest/SUBMISSION_PLAN.md)
 - Demo script: [`docs/algofest/FINAL_QB_DEMO_VIDEO_SCRIPT_AUTOMATION_AI.md`](docs/algofest/FINAL_QB_DEMO_VIDEO_SCRIPT_AUTOMATION_AI.md)
 
