@@ -1,0 +1,11 @@
+CCBS-PRO Proprietary Notice
+
+Except as otherwise expressly stated in THIRD_PARTY_NOTICES.md, the original CCBS materials in this repository are proprietary and confidential.
+
+All rights are reserved by the repository owner or other applicable rights holder.
+
+No permission is granted to use, copy, modify, merge, publish, distribute, sublicense, create derivative works from, disclose, or exploit this material except under a separate written agreement with the applicable rights holder.
+
+This repository is a mixed working repository. Some contents may be third-party, template-derived, generated, runtime-only, archival, or maintained only for provenance and evidence purposes. Those materials are not relicensed by this notice.
+
+For retained third-party or review-required material, see THIRD_PARTY_NOTICES.md.

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve through symlinks so this works from ~/.local/bin/ccbs-clean.
+SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}")"
+ROOT_DIR="$(cd "$(dirname "${SCRIPT_PATH}")" && pwd)"
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "ERROR: python3 not found on PATH." >&2
+  exit 127
+fi
+
+export PYTHONPATH="${ROOT_DIR}/src${PYTHONPATH:+:${PYTHONPATH}}"
+exec python3 -m ccbs_app.cli "$@"
