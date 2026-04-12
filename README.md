@@ -13,9 +13,33 @@ This repository is the minimal curated public submission surface. It keeps the r
 - Multi-instance lane manager: `scripts/codex_multi_manager.ps1`
 - Minimal public docs and submission assets: `docs/`
 
+## Requirements
+
+Tested path: Windows 11 with PowerShell.
+
+Required:
+
+- Git
+- Python 3.10+
+- PowerShell 5.1+ or PowerShell 7+
+- Node.js 18+ and `npm`
+
+Optional:
+
+- Azure CLI with Azure Quantum extension for live quantum workspace checks
+- Codex CLI if you want Codex-backed multi-lane launches instead of UI-only orchestration
+
+Notes:
+
+- The stable public demo path does not require Azure Quantum credentials.
+- The stable public demo path does not require a bearer token if you use local loopback owner auto-auth.
+- The first browser-automation run may install Playwright dependencies through `npm`.
+
 ## Quick Start
 
 ```powershell
+git clone https://github.com/vrbart/Q-Base-by-MVS-Final.git
+cd Q-Base-by-MVS-Final
 python -m venv .venv-clean
 .\.venv-clean\Scripts\Activate.ps1
 pip install -U pip
@@ -25,14 +49,14 @@ pip install -e .
 Run the local-first doctor flow:
 
 ```powershell
-.\QB-doctor.bat -SkipQuantumChecks -OpenUi
+.\QB-doctor.bat -SkipQuantumChecks -SkipTokenValidation -OpenUi
 ```
 
 Record the demo:
 
 ```powershell
 $env:CCBS_CODEX_INSTANCES_CONFIG = "config\codex_instances_10.json"
-.\Q-demo-record.bat -OpenUi -SkipQuantumChecks -CaptureSeconds 150 -Headed
+.\Q-demo-record.bat -SkipDoctor -CaptureSeconds 150 -Headed
 ```
 
 Run the proof script:
@@ -54,3 +78,4 @@ Run the proof script:
 - Azure Quantum is optional. Use `-SkipQuantumChecks` for the stable local demo path.
 - Loopback owner auto-auth is supported for local demos.
 - Strict token-provider validation can be enabled later with `scripts/set_qb_api_token.ps1`.
+- For the 10-lane demo path, set `CCBS_CODEX_INSTANCES_CONFIG=config\codex_instances_10.json` before `Q-demo-record.bat`.
