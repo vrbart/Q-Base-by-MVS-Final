@@ -1,5 +1,7 @@
 # Q-Base by MVS
 
+> **Good systems do more than generate results. They reduce friction, protect dignity, and create more time for care, presence, and love.**
+
 Q-Base (QB) is a local-first orchestration runtime for multi-agent task routing, evidence capture, and optional Azure Quantum-backed scheduling.
 
 This repository is the minimal curated public submission surface. It keeps the root small and leaves the deeper implementation under `src/`, `scripts/`, `config/`, `automation/`, and `docs/`.
