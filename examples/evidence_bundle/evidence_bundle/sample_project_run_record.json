@@ -1,0 +1,85 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "backend": "azure-quantum-via-foundry",
+      "completed_at_utc": "2026-04-11T17:57:34+00:00",
+      "mode": "auto",
+      "started_at_utc": "2026-04-11T17:57:34+00:00",
+      "status": "ok"
+    }
+  ],
+  "backend_chain": [
+    "azure-quantum-via-foundry",
+    "ibm-quantum-runtime",
+    "classical-baseline"
+  ],
+  "batch_metadata": {
+    "created_for": "AlgoFest 2026 public proof bundle",
+    "description": "Minimal deterministic project for Q-Base evidence capture.",
+    "name": "sample_project",
+    "owner": "MVS"
+  },
+  "batch_path": "examples/sample_project.json",
+  "batch_sha256": "5f97df7ba3653f2f4e1f1a1628c0422b545798a2afac7a7d8b4dbb52b770965e",
+  "command_matrix": [
+    {
+      "backend": "azure-quantum-via-foundry",
+      "max_retries": 0,
+      "mode": "auto",
+      "timeout_budget_seconds": 300
+    },
+    {
+      "backend": "ibm-quantum-runtime",
+      "max_retries": 0,
+      "mode": "auto",
+      "timeout_budget_seconds": 300
+    },
+    {
+      "backend": "classical-baseline",
+      "max_retries": 0,
+      "mode": "classical",
+      "timeout_budget_seconds": 300
+    }
+  ],
+  "completed_at_utc": "2026-04-11T17:57:34+00:00",
+  "constraint_report": {
+    "passed": true,
+    "reasons": [],
+    "selected_count": 1
+  },
+  "dry_run": false,
+  "executed_backend": "classical-baseline",
+  "fallback_reason": null,
+  "fallback_used": false,
+  "files": {
+    "decision_manifest_json": ".ccbs/quantum/runs/qr_bc3a8473bf99/decision_manifest.json",
+    "decision_manifest_markdown": ".ccbs/quantum/runs/qr_bc3a8473bf99/decision_manifest.md",
+    "input_batch": ".ccbs/quantum/runs/qr_bc3a8473bf99/input_batch.json",
+    "run_record": ".ccbs/quantum/runs/qr_bc3a8473bf99/run_record.json"
+  },
+  "mode": "auto",
+  "objective_score": -40.6,
+  "primary_backend": "azure-quantum-via-foundry",
+  "provider": "azure",
+  "provider_options": {
+    "failover_enabled": true,
+    "max_retries": 0,
+    "timeout_budget_seconds": 120
+  },
+  "retry_policy": {
+    "failover_enabled": true,
+    "max_retries": 0,
+    "timeout_budget_seconds": 300
+  },
+  "run_dir": ".ccbs/quantum/runs/qr_bc3a8473bf99",
+  "run_id": "qr_bc3a8473bf99",
+  "runtime_ms": 0.048300003982149065,
+  "selected_task_ids": [
+    "bootstrap_workspace"
+  ],
+  "solver_mode": "classical_baseline",
+  "started_at_utc": "2026-04-11T17:57:34+00:00",
+  "status": "completed",
+  "task_count": 3
+}

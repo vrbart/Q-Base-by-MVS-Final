@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "name": "sample_project",
+    "description": "Minimal deterministic project for Q-Base evidence capture.",
+    "owner": "MVS",
+    "created_for": "AlgoFest 2026 public proof bundle"
+  },
+  "tasks": [
+    {
+      "task_id": "bootstrap_workspace",
+      "name": "Bootstrap workspace",
+      "value": 9.0,
+      "cost": 2.0,
+      "risk": 0.2,
+      "required_resources": [
+        "editor"
+      ],
+      "metadata": {
+        "lane": "ops",
+        "deliverable": "workspace initialized"
+      }
+    },
+    {
+      "task_id": "draft_api_contract",
+      "name": "Draft API contract",
+      "value": 7.5,
+      "cost": 2.5,
+      "risk": 0.3,
+      "dependencies": [
+        "bootstrap_workspace"
+      ],
+      "required_resources": [
+        "editor"
+      ],
+      "metadata": {
+        "lane": "design",
+        "deliverable": "api contract draft"
+      }
+    },
+    {
+      "task_id": "capture_demo_evidence",
+      "name": "Capture demo evidence",
+      "value": 6.0,
+      "cost": 1.5,
+      "risk": 0.1,
+      "dependencies": [
+        "draft_api_contract"
+      ],
+      "required_resources": [
+        "storage"
+      ],
+      "metadata": {
+        "lane": "reporting",
+        "deliverable": "evidence bundle"
+      }
+    }
+  ],
+  "constraints": {
+    "choose_exactly_one": true,
+    "max_selected": 1
+  },
+  "weights": {
+    "value_weight": 5.0,
+    "cost_weight": 2.0,
+    "risk_weight": 2.0,
+    "dependency_penalty": 12.0,
+    "resource_penalty": 12.0,
+    "conflict_penalty": 12.0,
+    "cardinality_penalty": 8.0
+  },
+  "provider_options": {
+    "failover_enabled": true,
+    "max_retries": 0,
+    "timeout_budget_seconds": 120
+  }
+}

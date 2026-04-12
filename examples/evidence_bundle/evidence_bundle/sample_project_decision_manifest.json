@@ -1,0 +1,30 @@
+{
+  "run_id": "0fa0d974-7d62-4214-a35c-8f29c25e8ea0",
+  "created_at": "2026-04-11T17:57:34+00:00",
+  "solver_mode": "classical_baseline",
+  "selected_task_set": [
+    "bootstrap_workspace"
+  ],
+  "rejected_tasks": {
+    "capture_demo_evidence": "dependency_not_ready",
+    "draft_api_contract": "resource_conflict_with:bootstrap_workspace"
+  },
+  "constraint_report": {
+    "passed": true,
+    "reasons": [],
+    "selected_count": 1
+  },
+  "objective_score": -40.6,
+  "bitstring": "100",
+  "runtime_ms": 0.048300003982149065,
+  "confidence": null,
+  "fallback_note": null,
+  "primary_backend": "azure-quantum-via-foundry",
+  "executed_backend": "classical-baseline",
+  "fallback_used": false,
+  "fallback_reason": null,
+  "metadata": {
+    "primary_backend": "azure-quantum-via-foundry",
+    "fallback_backend": "ibm-quantum-runtime"
+  }
+}
