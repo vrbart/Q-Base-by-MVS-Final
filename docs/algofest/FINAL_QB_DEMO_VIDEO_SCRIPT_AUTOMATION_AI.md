@@ -210,7 +210,7 @@ YouTube guidance:
 ## Fallback Path (if doctor fails under time pressure)
 
 ```powershell
-.\Q-demo-record.bat -OpenUi -SkipQuantumChecks -CaptureSeconds 150 -Headed
+.\Q-demo-record.bat -OpenUi -SkipQuantumChecks -SkipTokenValidation -CaptureSeconds 150 -Headed
 ```
 
 Then show evidence and close with the same narrative.
