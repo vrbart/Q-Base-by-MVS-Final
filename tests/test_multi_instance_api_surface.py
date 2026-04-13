@@ -115,7 +115,7 @@ class MultiInstanceApiSurfaceTests(unittest.TestCase):
         resp = self.client.get("/v3/multi-instance/ui", headers=self.headers)
         self.assertEqual(resp.status_code, 200)
         text = resp.text
-        self.assertIn("CCBS Multi-Instance Control", text)
+        self.assertIn("Multi-Instance Control", text)
         self.assertIn("/v3/multi-instance/runtime", text)
         self.assertIn("/v3/multi-instance/route", text)
         self.assertIn("/v3/multi-instance/optimize", text)

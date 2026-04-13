@@ -175,14 +175,14 @@ Use this close:
 Use this command to run the busy driver and capture many visible actions:
 
 ```powershell
-.\Q-demo-busy.bat -SubscriptionId $env:CCBS_AZ_SUBSCRIPTION_ID -ResourceGroup $env:CCBS_AZ_RESOURCE_GROUP -WorkspaceName $env:CCBS_AZ_WORKSPACE_NAME -Location $env:CCBS_AZ_LOCATION -OpenUi -Use10Lanes -IncludeGitPush -CaptureSeconds 260
+$env:CCBS_CODEX_INSTANCES_CONFIG = "config\codex_instances_10.json"
+.\Q-demo-record.bat -SubscriptionId $env:CCBS_AZ_SUBSCRIPTION_ID -ResourceGroup $env:CCBS_AZ_RESOURCE_GROUP -WorkspaceName $env:CCBS_AZ_WORKSPACE_NAME -Location $env:CCBS_AZ_LOCATION -OpenUi -SkipQuantumChecks -SkipTokenValidation -CaptureSeconds 260 -Headed
 ```
 
 This gives you:
 
 - UI activity
 - terminal evidence checks
-- optional Git push moment
 - generated `dist/demo/qb_demo_steps.json`
 
 ## Video Acceptance Checklist (must all be true)

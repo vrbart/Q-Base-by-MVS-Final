@@ -29,22 +29,22 @@ Goal: capture a clean, judge-friendly video that looks like the screenshot: **VS
 Start OBS recording, then run:
 
 ```powershell
-.\Q-demo-busy.bat -OpenUi -Use10Lanes -IncludeGitPush -CaptureSeconds 260
+$env:CCBS_CODEX_INSTANCES_CONFIG = "config\codex_instances_10.json"
+.\Q-demo-record.bat -OpenUi -SkipQuantumChecks -SkipTokenValidation -CaptureSeconds 260 -Headed
 ```
 
 What it does:
 - Runs `QB-doctor` (bootstraps, enables owner auto-auth, opens UI)
 - Opens the QB multi-instance deck page
-- Opens VS Code (optional) with key demo files
-- Launches a few “proof” terminals (lane status, artifacts, optional quantum targets)
-- Uses the 10-lane Codex config if available
-- Creates and pushes a tiny demo publish marker commit, then opens the GitHub repo page
 - Runs `Q-demo-record.bat` (Playwright-driven UI actions with `tasks N/200` overlay)
+- Uses the 10-lane Codex config when `CCBS_CODEX_INSTANCES_CONFIG` is set
+- Writes capture output under `dist/demo/`
 
 If you want the system to keep cycling between windows for a longer raw recording (you can cut later):
 
 ```powershell
-.\Q-demo-busy.bat -OpenUi -Use10Lanes -IncludeGitPush -RunForever
+$env:CCBS_CODEX_INSTANCES_CONFIG = "config\codex_instances_10.json"
+.\Q-demo-record.bat -OpenUi -SkipQuantumChecks -SkipTokenValidation -CaptureSeconds 1200 -Headed
 ```
 
 ## 4) Don’t Leak Secrets
