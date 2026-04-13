@@ -399,15 +399,22 @@ function Start-InstancePowerShell {
     [string]$Name,
     [string]$Path,
     [string]$LaunchArgs,
-    [ValidateSet("Normal","Minimized","Maximized","Hidden")]
     [string]$WindowStyle = ""
   )
 
   if ([string]::IsNullOrWhiteSpace($WindowStyle)) {
-    $WindowStyle = ([string]$env:CCBS_LANE_WINDOW_STYLE).Trim()
+    $envWindowStyle = ([string]$env:CCBS_LANE_WINDOW_STYLE).Trim()
+    if (-not [string]::IsNullOrWhiteSpace($envWindowStyle)) {
+      $WindowStyle = $envWindowStyle
+    }
   }
   if ([string]::IsNullOrWhiteSpace($WindowStyle)) {
     # Default to hidden to avoid spawning visible windows during automated demos/doctor runs.
+    $WindowStyle = "Hidden"
+  }
+  $allowedWindowStyles = @("Normal", "Minimized", "Maximized", "Hidden")
+  if ($allowedWindowStyles -notcontains $WindowStyle) {
+    Write-Host ("[WARN] Invalid CCBS_LANE_WINDOW_STYLE '{0}'. Falling back to Hidden." -f $WindowStyle) -ForegroundColor Yellow
     $WindowStyle = "Hidden"
   }
 

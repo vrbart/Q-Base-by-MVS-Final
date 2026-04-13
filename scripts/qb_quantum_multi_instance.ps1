@@ -43,11 +43,14 @@ $ErrorActionPreference = "Stop"
 	}
 
 	function Invoke-LaneManager {
-	  param([string[]]$Args)
-	  if ([string]::IsNullOrWhiteSpace($LaneConfigPath)) {
-	    return (& $LaneManager @Args)
+	  param([hashtable]$Params)
+	  if (-not $Params) {
+	    $Params = @{}
 	  }
-	  return (& $LaneManager -ConfigPath $LaneConfigPath @Args)
+	  if (-not [string]::IsNullOrWhiteSpace($LaneConfigPath) -and (-not $Params.ContainsKey("ConfigPath"))) {
+	    $Params.ConfigPath = $LaneConfigPath
+	  }
+	  return (& $LaneManager @Params)
 	}
 
 function Resolve-InputOrEnv {
@@ -95,7 +98,7 @@ function Invoke-AzChecked {
 	    return $null
 	  }
 	  try {
-	    $raw = Invoke-LaneManager @("-Action", "status-json") 2>$null
+	    $raw = Invoke-LaneManager @{ Action = "status-json" } 2>$null
 	    if ([string]::IsNullOrWhiteSpace([string]$raw)) {
 	      return $null
 	    }
@@ -204,11 +207,25 @@ try {
       } else {
         $env:Q_LAUNCH_SKIP_BROWSER = "1"
       }
+      if ($SkipTokenValidation) {
+        $env:Q_LAUNCH_SKIP_VALIDATE = "1"
+      } else {
+        Remove-Item Env:Q_LAUNCH_SKIP_VALIDATE -ErrorAction SilentlyContinue
+      }
       try {
         & $QLaunch
+        $qLaunchExit = 0
+        $lastExitVar = Get-Variable LASTEXITCODE -Scope Global -ErrorAction SilentlyContinue
+        if ($lastExitVar) {
+          $qLaunchExit = [int]$global:LASTEXITCODE
+        }
+        if ($qLaunchExit -ne 0) {
+          throw "Q-launch failed with exit code $qLaunchExit"
+        }
       } finally {
         Remove-Item Env:Q_LAUNCH_SKIP_LANES -ErrorAction SilentlyContinue
         Remove-Item Env:Q_LAUNCH_SKIP_BROWSER -ErrorAction SilentlyContinue
+        Remove-Item Env:Q_LAUNCH_SKIP_VALIDATE -ErrorAction SilentlyContinue
       }
     }
   }
@@ -216,7 +233,7 @@ try {
   if (-not $SkipLaneLaunch) {
 		  if (-not $SkipWorkspaceSync) {
 		    Run-Step -Label "Sync multi-instance workspace registry" -Action {
-		      Invoke-LaneManager @("-Action", "sync-workspaces")
+		      Invoke-LaneManager @{ Action = "sync-workspaces" }
 		    }
 		  }
 
@@ -242,9 +259,9 @@ try {
 		    if (-not $skipLaneLaunchBecauseHealthy -or $ForceLaneRelaunch) {
 		      Run-Step -Label "Launch/reuse QB multi-instance lanes" -Action {
 		        if ($ForceLaneRelaunch) {
-		          Invoke-LaneManager @("-Action", "launch", "-ForceRelaunch")
+		          Invoke-LaneManager @{ Action = "launch"; ForceRelaunch = $true }
 		        } else {
-		          Invoke-LaneManager @("-Action", "launch")
+		          Invoke-LaneManager @{ Action = "launch" }
 		        }
 		      }
 		    } else {
@@ -253,7 +270,7 @@ try {
     }
 
 		    Run-Step -Label "Verify lane health" -Action {
-		      Invoke-LaneManager @("-Action", "status")
+		      Invoke-LaneManager @{ Action = "status" }
 		    }
 		  }
 

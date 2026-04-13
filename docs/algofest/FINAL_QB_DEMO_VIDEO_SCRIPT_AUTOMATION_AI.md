@@ -1,192 +1,216 @@
-# FINAL QB Demo Video Script (Canonical)
+# FINAL QB Demo Video Script (Winning Cut)
 
-This is the single authoritative demo script for public use.
+This is the canonical, judge-facing runbook for a strong 2-5 minute submission video.
 
-All other demo docs remain in the repo and point back to this file.
+## Core Message (use this exact framing)
 
-## 0) Public-Safe Inputs
+Q-Base is not a shortcut around work. It is a system for doing hard work with structure, evidence, and accountability.
 
-Set these once in your shell (or pass them as command args):
+Use this line on camera:
+
+> Good systems do more than generate results. They reduce friction, protect dignity, and create more time for care, presence, and love.
+
+Use this thesis during the optimization segment:
+
+> QPU explores hard decision space; CPU verifies and executes with deterministic safety.
+
+## Video Goal
+
+Show five concrete things in one take:
+
+1. Doctor/bootstrap recovery works.
+2. Multi-lane UI is live and understandable.
+3. Routing + optimization produce a visible decision.
+4. Evidence artifacts are generated and inspectable.
+5. Quantum is integrated but optional (preflight only in live cut).
+
+## Runtime Profile For Winning Reliability
+
+- Use the stable local path.
+- Show quantum target preflight, not a long quantum solve.
+- Keep the cut to 4:20 target (allowed range is 2:00-5:00).
+
+## Preflight (before recording)
 
 ```powershell
+cd C:\Users\Myles\Projects\CCBS-CLEAN-WORKSPACE\Q-Base-by-MVS-Final
 $env:CCBS_AZ_SUBSCRIPTION_ID = "<SUBSCRIPTION_ID>"
 $env:CCBS_AZ_RESOURCE_GROUP = "<RESOURCE_GROUP>"
 $env:CCBS_AZ_WORKSPACE_NAME = "<WORKSPACE_NAME>"
 $env:CCBS_AZ_LOCATION = "eastus"
+$env:CCBS_CODEX_INSTANCES_CONFIG = "config\codex_instances_10.json"
 ```
 
-Never hardcode real tenant IDs, subscription IDs, emails, or bearer tokens in docs.
+If you want a quieter run, use default 3-lane config and skip the env var above.
 
-## 1) Scene Plan (Say / Do / Execute)
+## Recording Timeline (4:20 target)
 
-### Scene 1 - Clone + Setup
+### 0:00-0:15 Title Card
 
-Say:
-"This is a fresh clone and standard setup."
+On-screen text:
 
-Do:
-Open terminal and show clean repo checkout.
+- `Q-Base (QB) by MVS`
+- `Local-first orchestration + evidence`
+- `Optional Azure Quantum preflight`
 
-Execute:
+Narration:
 
-```bash
-git clone https://github.com/vrbart/Q-Base-by-MVS.git qb-demo
-cd qb-demo
-python -m venv .venv-clean
-# Windows
-.venv-clean\Scripts\activate
-# macOS/Linux
-# source .venv-clean/bin/activate
-pip install -U pip
-pip install -e .
-```
+- "This demo shows structured orchestration, not a one-shot prompt."
 
-### Scene 2 - Doctor + Bootstrap (Multi-Step Proof)
+### 0:15-0:55 Bootstrap Proof (one command)
 
-Say:
-"Doctor returns the system to a working state and enables loopback owner auto-auth so the UI can run without pasting a bearer token."
-
-Do:
-Run the doctor wrapper with env-backed parameters.
-
-Execute:
+Command:
 
 ```powershell
-# Optional (for a “10 lanes” shot without popping windows):
-# $env:CCBS_CODEX_INSTANCES_CONFIG = "config\\codex_instances_10.json"
-
 .\QB-doctor.bat -SubscriptionId $env:CCBS_AZ_SUBSCRIPTION_ID -ResourceGroup $env:CCBS_AZ_RESOURCE_GROUP -WorkspaceName $env:CCBS_AZ_WORKSPACE_NAME -Location $env:CCBS_AZ_LOCATION -OpenUi
 ```
 
-Success criteria on screen:
-- workspace state `Succeeded`
-- workspace usable `Yes`
-- lane availability `3/3`
-- API health `200`
-- UI loads without token paste (owner auto-auth enabled)
+Capture these lines clearly:
 
-### Scene 3 - Automated UI Run + Capture (Refresh + Sync + Route + Optimize)
+- API health `200 OK`
+- workspace `Succeeded` and `usable Yes` (if quantum configured)
+- lane availability `3/3` (or `10/10` if showcase mode)
 
-Say:
-"Now we record a single take that performs multiple visible actions: Refresh, Sync Workspaces, Route Ask, Optimize, Evidence, and a live Git push. The overlay shows a running counter so you can see we complete **200** route/optimize actions."
+Narration:
 
-Do:
-Run prep, then the automation wrapper.
+- "Doctor is idempotent and returns the stack to a healthy state."
 
-Execute:
+### 0:55-1:30 UI Orientation (clear labels)
 
-```powershell
-.\Q-demo-prep.bat -SkipTests
-.\Q-demo-busy.bat -SubscriptionId $env:CCBS_AZ_SUBSCRIPTION_ID -ResourceGroup $env:CCBS_AZ_RESOURCE_GROUP -WorkspaceName $env:CCBS_AZ_WORKSPACE_NAME -Location $env:CCBS_AZ_LOCATION -OpenUi -Use10Lanes -IncludeGitPush -CaptureSeconds 260
-```
+Open:
 
-What the recording will show (on-screen overlay):
-- STEP 1/6 Refresh
-- STEP 2/6 Sync Workspaces
-- STEP 3/6 Route Ask (runs multiple cycles across -1/-2/-3 lanes)
-- STEP 4/6 Optimize (runs multiple cycles with varying parallelism)
-- STEP 5/6 Evidence (expands capability scan)
-- STEP 6/6 Done (hold for readability while the busy driver also shows GitHub, VS Code, and terminals)
+- `http://127.0.0.1:11435/v3/ui`
 
-On-screen proof:
-- overlay includes `tasks <N>/200` (route + optimize actions)
-- `dist/demo/qb_demo_steps.json` records every action with timestamps
+Point at:
 
-### Scene 4 - Evidence Check (Artifacts are real)
+- Lanes/availability
+- Route Ask box (`-1 / -2 / -3` directives)
+- Optimize button
+- Evidence/telemetry region
 
-Say:
-"This run is evidence-backed, not just a UI click-through."
+Narration:
 
-Do:
-Show generated artifacts.
+- "The control plane is explicit: route, optimize, verify, evidence."
 
-Execute:
+### 1:30-2:50 Execute 3 Distinct Actions
+
+Action A:
+
+- Click `SYNC WORKSPACES`
+
+Action B:
+
+- Route ask with directive and label, for example:
+- Route input: `-1 Decompose: auth, todo CRUD, docs, deploy plan`
+- Label: `demo: decompose + assign`
+- Click `ROUTE ASK`
+
+Action C:
+
+- Set max parallel (3 or 10 depending on mode)
+- Click `OPTIMIZE`
+
+Success criteria on-screen:
+
+- Selected lane/solver/objective fields populate
+- Token telemetry updates
+- Last route table updates
+
+Narration:
+
+- "This is right-sized orchestration: not every task needs max parallelism."
+
+### 2:50-3:35 Evidence Proof
+
+Command window:
 
 ```powershell
 Get-ChildItem .\dist\demo
 Get-ChildItem .\dist\algofest\evidence
-Get-ChildItem .\.ccbs\quantum\runs -ErrorAction SilentlyContinue
 Get-Content .\dist\algofest\evidence\algofest_smoke_summary.json
 ```
 
-Expected artifacts:
-- `dist/demo/qb_demo_capture.webm`
-- `dist/demo/qb_demo_start.png`
-- `dist/demo/qb_demo_end.png`
-- `dist/algofest/evidence/algofest_smoke_summary.json`
+Show:
 
-Optional GitHub “200 tasks” prop (single issue, not spam):
-- Use the issue template `.github/ISSUE_TEMPLATE/algofest-demo-200-tasks.md`, or copy [`docs/DEMO_TASKLIST_200.md`](docs/DEMO_TASKLIST_200.md) into a single GitHub issue body to get a visible `0/200` counter.
-- The busy demo driver can also create a small video-linked publish commit on camera with `-IncludeGitPush`.
+- timestamped artifacts exist
+- run summary fields are populated
 
-### Scene 5 - Optional Quantum Preflight (fast only)
+Narration:
 
-Say:
-"Quantum is optional. For the demo we only show target availability; QB can fall back to classical planning."
+- "Claims are backed by artifacts, not just UI state."
 
-Do:
-Run a quick target list (no long jobs).
-
-Execute:
+### 3:35-4:00 Optional Quantum Preflight (fast)
 
 ```powershell
 az quantum target list -o table
 ```
 
-### Optional GitHub App Segment (30-45s, only if already created)
+Narration:
 
-Say:
-"QB is designed to surface-adapt into external systems. Here is the GitHub App we use for future webhook/OAuth integrations."
+- "Quantum is integrated as an optional optimization lane. If unavailable, QB falls back to deterministic CPU execution."
 
-Do:
-Open the GitHub App settings page, but do not show secrets.
+### 4:00-4:20 Closing Message
 
-Execute (opens browser to the app list, or direct slug if provided):
+Use this close:
 
-```powershell
-.\Q-demo-github.bat
-# or
-.\Q-demo-github.bat -AppSlug "<your-app-slug>"
-```
+- "This project was built in real time through overlapping workstreams: writing, coding, proofing, validating, packaging, and orchestration."
+- "QPU search plus CPU certainty is a practical team for safer, auditable automation."
 
-### Scene 6 - Close
+## Strong Narration Blocks (drop-in)
 
-Say:
-"What you watched was executed and recorded by QB with reproducible evidence."
+### Opening
 
-Do:
-Hold final state for 3-5 seconds, then fade out.
+"Q-Base is a local-first orchestration runtime. It takes complex work, decomposes it, routes it across lanes, and returns evidence so results are inspectable and reproducible."
 
-## 2) Timing (Target 4:20)
+### QPU + CPU
 
-- `0:00-0:30` Problem and value
-- `0:30-1:20` Architecture and lane model
-- `1:20-2:30` Doctor/bootstrap proof
-- `2:30-3:40` Automated UI run
-- `3:40-4:20` Evidence review and close
+"Quantum-style search helps explore competing options under constraints. CPU execution enforces policy, validation, and repeatability. Exploration plus verification is the practical pairing."
 
-## 3) No-Overclaim Rules
+### Human Value
 
-- Quantum is optional and may fall back to classical.
-- This is a polished prototype, not a production SLA claim.
-- Do not claim real hardware quantum execution unless shown.
+"This is not about replacing effort. It is about removing avoidable friction so people can focus on judgment, care, and meaningful work."
 
-## 4) Troubleshooting (Non-Destructive)
+## If You Want Busy Visuals (without fake behavior)
 
-- Missing token provider:
+Use this command to run the busy driver and capture many visible actions:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_qb_api_token.ps1 -Mode command -TokenCommand "<cmd>"
+.\Q-demo-busy.bat -SubscriptionId $env:CCBS_AZ_SUBSCRIPTION_ID -ResourceGroup $env:CCBS_AZ_RESOURCE_GROUP -WorkspaceName $env:CCBS_AZ_WORKSPACE_NAME -Location $env:CCBS_AZ_LOCATION -OpenUi -Use10Lanes -IncludeGitPush -CaptureSeconds 260
 ```
 
-- Re-run doctor:
+This gives you:
+
+- UI activity
+- terminal evidence checks
+- optional Git push moment
+- generated `dist/demo/qb_demo_steps.json`
+
+## Video Acceptance Checklist (must all be true)
+
+- At least 3 distinct UI actions are visible.
+- A route/optimize decision is visibly populated.
+- Evidence file output is shown in terminal.
+- Duration is within 2:00-5:00.
+- No secrets, webhook secrets, tokens, or private IDs are shown on camera.
+
+## Post-Capture Packaging
+
+Primary outputs to keep:
+
+- `dist/demo/qb_demo_capture.webm`
+- `dist/demo/qb_demo_steps.json`
+- `dist/algofest/evidence/algofest_smoke_summary.json`
+
+YouTube guidance:
+
+- Upload as `Unlisted` for submission.
+- Put this exact link in Devpost `Video demo link`.
+- Keep repo link in `Try it out`.
+
+## Fallback Path (if doctor fails under time pressure)
 
 ```powershell
-.\QB-doctor.bat -SubscriptionId $env:CCBS_AZ_SUBSCRIPTION_ID -ResourceGroup $env:CCBS_AZ_RESOURCE_GROUP -WorkspaceName $env:CCBS_AZ_WORKSPACE_NAME -Location $env:CCBS_AZ_LOCATION -OpenUi
+.\Q-demo-record.bat -OpenUi -SkipQuantumChecks -CaptureSeconds 150 -Headed
 ```
 
-- Skip lane relaunch (prevent extra windows):
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\qb_quantum_multi_instance.ps1 -SubscriptionId $env:CCBS_AZ_SUBSCRIPTION_ID -ResourceGroup $env:CCBS_AZ_RESOURCE_GROUP -WorkspaceName $env:CCBS_AZ_WORKSPACE_NAME -Location $env:CCBS_AZ_LOCATION -SkipLaneLaunch -OpenUi
-```
+Then show evidence and close with the same narrative.
